@@ -60,7 +60,7 @@ plugins {
     id("fabric-loom") version("1.10-SNAPSHOT")
     id("com.diffplug.spotless") version("7.0.4")
     id("org.ajoberstar.grgit") version("5.3.2")
-    id("dev.galacticraft.mojarn") version("0.6.1+19")
+    id("dev.galacticraft.mojarn") version("0.7.0+12")
 }
 
 java {
@@ -161,12 +161,6 @@ loom {
 
 repositories {
     mavenLocal()
-    maven("https://repo.terradevelopment.net/repository/maven-releases/") {
-        // https://maven.galacticraft.net/repository/maven-releases
-        content {
-            includeGroup("dev.galacticraft")
-        }
-    }
     maven("https://mvn.devos.one/snapshots/") {
         content {
             includeGroup("io.github.fabricators_of_create.Porting-Lib")
