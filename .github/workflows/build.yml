@@ -37,8 +37,9 @@ jobs:
           git clone https://github.com/teamgalacticraft/mojarn.git
           cd mojarn
           chmod +x gradlew
-          ./gradlew publishToMavenLocal --stacktrace
-          ls -la ~/.m2/repository/dev/galacticraft/mojarn/
+          ./gradlew publishToMavenLocal --stacktrace --info
+          echo "=== CHECKING MAVEN LOCAL ==="
+          find ~/.m2/repository -name "*mojarn*" -type f
           cd ..
 
       - name: Initialize build environment
