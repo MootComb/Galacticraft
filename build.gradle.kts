@@ -69,7 +69,7 @@ plugins {
     id("fabric-loom") version("1.10-SNAPSHOT")
     id("com.diffplug.spotless") version("7.0.4")
     id("org.ajoberstar.grgit") version("5.3.2")
-    id("dev.galacticraft.mojarn") version ("0.7.0+18")
+    id("dev.galacticraft.mojarn") version ("0.7.0+20")
 }
 
 java {
