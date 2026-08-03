@@ -54,22 +54,13 @@ val architecturyVersion      = project.property("architectury.version").toString
 val appleskinVersion         = project.property("appleskin.version").toString()
 val objVersion               = project.property("obj.version").toString()
 
-pluginManagement {
-    repositories {
-        mavenLocal()
-        gradlePluginPortal()
-        mavenCentral()
-        maven("https://maven.fabricmc.net/")
-    }
-}
-
 plugins {
     java
     `maven-publish`
     id("fabric-loom") version("1.10-SNAPSHOT")
     id("com.diffplug.spotless") version("7.0.4")
     id("org.ajoberstar.grgit") version("5.3.2")
-    id("dev.galacticraft.mojarn") version ("0.7.0+22")
+    id("dev.galacticraft.mojarn")
 }
 
 java {
