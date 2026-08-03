@@ -37,23 +37,24 @@ jobs:
           git clone https://github.com/teamgalacticraft/mojarn.git
           cd mojarn
           chmod +x gradlew
-          ./gradlew publishToMavenLocal
+          ./gradlew publishToMavenLocal --stacktrace
+          ls -la ~/.m2/repository/dev/galacticraft/mojarn/
           cd ..
 
       - name: Initialize build environment
-        run: ./gradlew
+        run: ./gradlew --stacktrace
 
       - name: Spotless check
-        run: ./gradlew spotlessCheck
+        run: ./gradlew spotlessCheck --stacktrace
 
       - name: Build
         id: build
         if: ${{ !cancelled() }}
-        run: ./gradlew assemble testClasses -x spotlessCheck
+        run: ./gradlew assemble testClasses -x spotlessCheck --stacktrace
 
       - name: Test
         if: ${{ steps.build.outcome == 'success' && !cancelled() }}
-        run: ./gradlew test -x spotlessCheck
+        run: ./gradlew test -x spotlessCheck --stacktrace
 
       - name: Capture build artifacts
         uses: actions/upload-artifact@v7
