@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches: [ 'main' ]
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
   build:
@@ -32,6 +32,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
+      - name: Build and publish Mojarn locally
+        run: |
+          git clone https://github.com/teamgalacticraft/mojarn.git
+          cd mojarn
+          chmod +x gradlew
+          ./gradlew publishToMavenLocal
+          cd ..
+
       - name: Initialize build environment
         run: ./gradlew
 
@@ -46,14 +54,6 @@ jobs:
       - name: Test
         if: ${{ steps.build.outcome == 'success' && !cancelled() }}
         run: ./gradlew test -x spotlessCheck
-
-#      - name: Publish
-#        if: ${{ github.repository == 'TeamGalacticraft/Galacticraft' && success() }}
-#        run: ./gradlew publish
-#        env:
-#          NEXUS_REPOSITORY_URL: ${{ secrets.NEXUS_RELEASE_URL }}
-#          NEXUS_USER: ${{ secrets.NEXUS_USER }}
-#          NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
 
       - name: Capture build artifacts
         uses: actions/upload-artifact@v7
