@@ -54,6 +54,15 @@ val architecturyVersion      = project.property("architectury.version").toString
 val appleskinVersion         = project.property("appleskin.version").toString()
 val objVersion               = project.property("obj.version").toString()
 
+pluginManagement {
+    repositories {
+        mavenLocal()
+        gradlePluginPortal()
+        mavenCentral()
+        maven("https://maven.fabricmc.net/")
+    }
+}
+
 plugins {
     java
     `maven-publish`
